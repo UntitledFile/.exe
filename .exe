@@ -1,0 +1,163 @@
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+local Window = Library.CreateLib(".exe", "DarkTheme")
+
+
+--Main
+local Main = Window:NewTab("Main")
+local MainSection = Main:NewSection("Main")
+
+MainSection:NewButton("Fly", "/e Fly", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/PhoenixAceVFX/Roblox-Scripts/master/FE%20Fly.lua"))()
+end)
+
+MainSection:NewButton("Noclip", "/e Noclip", function()
+    loadstring(game:HttpGet("https://pastebin.com/raw/pKV2Ys4E"))()
+end)
+
+MainSection:NewButton("Esp", "/e Esp", function()
+    local c = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))() local b = c:MakeWindow({Name = tostring("\83\101\109\105\45\67\97\116\104\111\108\105\99\32\69\83\80"), HidePremium = false, SaveConfig = false}) local o = b:MakeTab({ Name = "\77\97\105\110", Icon = "\114\98\120\97\115\115\101\116\105\100\58\47\47\52\52\56\51\51\52\53\57\57\56", PremiumOnly = false }) getgenv().cham = false getgenv().nameESP = false getgenv().boxESP = false getgenv().esp_loaded = false getgenv().Visibility = false o:AddToggle({ Name = "\86\105\115\117\97\108", Default = getgenv().Visibility, Callback = function(m) if getgenv().esp_loaded == false and m == true then getgenv().esp_loaded = true loadstring(game:HttpGet("\104\116\116\112\115\58\47\47\114\97\119\46\103\105\116\104\117\98\117\115\101\114\99\111\110\116\101\110\116\46\99\111\109\47\115\107\97\116\98\114\47\82\111\98\108\111\120\45\82\101\108\101\97\115\101\115\47\109\97\105\110\47\65\95\115\105\109\112\108\101\95\101\115\112\46\108\117\97", true))() end getgenv().Visibility = m end    }) o:AddToggle({ Name = "\66\111\120\32\69\83\80", Default = getgenv().Visibility, Callback = function(m) if getgenv().esp_loaded == false and m == true then getgenv().esp_loaded = true loadstring(game:HttpGet("\104\116\116\112\115\58\47\47\114\97\119\46\103\105\116\104\117\98\117\115\101\114\99\111\110\116\101\110\116\46\99\111\109\47\115\107\97\116\98\114\47\82\111\98\108\111\120\45\82\101\108\101\97\115\101\115\47\109\97\105\110\47\65\95\115\105\109\112\108\101\95\101\115\112\46\108\117\97", true))() end getgenv().boxESP = m end    }) o:AddToggle({ Name = "\78\97\109\101", Default = getgenv().Visibility, Callback = function(m) if getgenv().esp_loaded == false and m == true then getgenv().esp_loaded = true loadstring(game:HttpGet("\104\116\116\112\115\58\47\47\114\97\119\46\103\105\116\104\117\98\117\115\101\114\99\111\110\116\101\110\116\46\99\111\109\47\115\107\97\116\98\114\47\82\111\98\108\111\120\45\82\101\108\101\97\115\101\115\47\109\97\105\110\47\65\95\115\105\109\112\108\101\95\101\115\112\46\108\117\97", true))() end getgenv().nameESP = m end    }) o:AddToggle({ Name = "\67\104\97\109\115", Default = getgenv().Visibility, Callback = function(m) if getgenv().esp_loaded == false and m == true then getgenv().esp_loaded = true loadstring(game:HttpGet("\104\116\116\112\115\58\47\47\114\97\119\46\103\105\116\104\117\98\117\115\101\114\99\111\110\116\101\110\116\46\99\111\109\47\115\107\97\116\98\114\47\82\111\98\108\111\120\45\82\101\108\101\97\115\101\115\47\109\97\105\110\47\65\95\115\105\109\112\108\101\95\101\115\112\46\108\117\97", true))() end getgenv().cham = m end    }) function SendNote(message : string, time) c:MakeNotification({ Name = "\84\105\116\108\101\33", Content = message, Image = "\114\98\120\97\115\115\101\116\105\100\58\47\47\52\52\56\51\51\52\53\57\57\56", Time = time or 3 }) end o:AddToggle({ Name = "\85\115\101\32\84\101\97\109\45\67\111\108\111\114", Default = false, Callback = function(m) getgenv().useTeamColor = m end }) local e = game:GetService("\67\111\114\101\71\117\105"):FindFirstChild("\79\114\105\111\110") local p = o:AddButton({ Name = "\68\101\115\116\114\111\121\32\71\85\73", Callback = function() e:Destroy() c:Destroy() wait(1) c:MakeNotification({ Name = "\82\101\109\111\118\105\110\103\32\71\85\73\46\46\46", Content = "\71\85\73\32\105\115\32\114\101\109\111\118\101\100\33", Time = 3 }) end    }) c:Init()
+end)
+
+MainSection:NewButton("Rejoin", "/e R", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/HeyGyt/rejoin/main/main"))()
+end)
+
+--LocalPlayer
+local Player = Window:NewTab("Player")
+local PlayerSection = Player:NewSection("Player")
+
+PlayerSection:NewSlider("WalkSpeed", "/e WS", 500, 16, function(s) -- 500 (MaxValue) | 0 (MinValue)
+    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = s
+end)
+
+PlayerSection:NewSlider("JumpPower", "/e JP", 500, 50, function(s) -- 500 (MaxValue) | 0 (MinValue)
+    game.Players.LocalPlayer.Character.Humanoid.JumpPower = s
+end)
+
+PlayerSection:NewToggle("SuperHuman", "/e SH", function(state)
+    if state then
+        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 120
+        game.Players.LocalPlayer.Character.Humanoid.JumpPower = 120
+    else
+        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 16
+        game.Players.LocalPlayer.Character.Humanoid.JumpPower = 50
+    end
+end)
+
+PlayerSection:NewButton("TpTool", "/e TPT", function()
+    mouse = game.Players.LocalPlayer:GetMouse()
+tool = Instance.new("Tool")
+tool.RequiresHandle = false
+tool.Name = "Equip to Click TP"
+tool.Activated:connect(function()
+local pos = mouse.Hit+Vector3.new(0,2.5,0)
+pos = CFrame.new(pos.X,pos.Y,pos.Z)
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = pos
+end)
+tool.Parent = game.Players.LocalPlayer.Backpack
+end)
+
+
+--Other
+local Other = Window:NewTab("Other")
+local OtherSection = Other:NewSection("Other")
+
+OtherSection:NewButton("Winger Master", "/e WM", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/HeyGyt/fewingled/main/main"))()
+end)
+
+OtherSection:NewButton("DaFeet", "/e DF", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/HeyGyt/dafeet/main/main"))()
+end)
+
+OtherSection:NewButton("Parkourman", "/e P", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/HeyGyt/parkour/main/main"))()
+end)
+
+OtherSection:NewButton("Mannequin", "/e M", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/HeyGyt/mannequin/main/main"))()
+end)
+
+OtherSection:NewButton("CreepyCrawler", "/e CC", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/HeyGyt/crawler/main/main"))()
+end)
+
+OtherSection:NewButton("Jerkoff", "/e J", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/HeyGyt/jerkoff/main/main"))()
+end)
+
+OtherSection:NewButton("HumanDick", "/e HD", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/HeyGyt/pens/main/main"))()
+end)
+
+OtherSection:NewButton("HumanChair", "/e HC", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/HeyGyt/chair/main/main"))()
+end)
+
+OtherSection:NewButton("HumanTable", "/e HT", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/HeyGyt/table/main/main"))()
+end)
+
+OtherSection:NewButton("HumanHelicopter", "/e HH", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/HeyGyt/humanhelicopter/main/main"))()
+end)
+
+OtherSection:NewButton("HumanCube", "/e HC", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/HeyGyt/cube/main/main"))()
+end)
+
+OtherSection:NewButton("Penis", "/e P", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/HeyGyt/penis/main/main"))()
+end)
+
+OtherSection:NewButton("Trashformer", "/e T", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/HeyGyt/trashformer/main/main"))()
+end)
+
+OtherSection:NewButton("HumanPyramid", "/e HP", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/HeyGyt/pyramid/main/main"))()
+end)
+
+OtherSection:NewButton("Memus", "/e M", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/HeyGyt/memeus/main/main"))()
+end)
+
+OtherSection:NewButton("Helicopter", "/e H", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/HeyGyt/helicopter/main/main"))()
+end)
+
+OtherSection:NewButton("Emotes", "/e E", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/HeyGyt/nameless/main/main"))()
+end)
+
+OtherSection:NewButton("HolySpirit", "/e HS", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/HeyGyt/ang/main/main"))()
+end)
+
+OtherSection:NewButton("InkMonster", "/e IM", function()
+    loadstring(game:HttpGet(('https://raw.githubusercontent.com/HeyGyt/inkmonster/main/main'),true))()
+end)
+
+OtherSection:NewButton("Spider", "/e S", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/HeyGyt/spidey/main/main"))()
+end)
+
+OtherSection:NewButton("HolidayFeels", "/e HF", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/HeyGyt/holidayfeels/main/main"))()
+end)
+
+OtherSection:NewButton("CursedSpider", "/e CS", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/HeyGyt/cursedspider/main/main"))()
+end)
+
+OtherSection:NewButton("AmongUs", "/e AU", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/HeyGyt/amogus/main/main"))()
+end)
+
+OtherSection:NewButton("LongNeck", "/e LN", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/HeyGyt/longneck/main/main"))()
+end)
+
+OtherSection:NewButton("Snake", "/e S", function()
+    loadstring(game:HttpGet(('https://pastefy.ga/tWBTcE4R/raw'),true))()
+end)
